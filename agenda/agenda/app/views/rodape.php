@@ -1,3 +1,3 @@
 <footer class="rodape">
-			<p>CopyRight - 2018</p>
-		</footer>
+    <p>Copyright © <?php echo date('Y'); ?> Agenda. Todos os direitos reservados.</p>
+</footer>
