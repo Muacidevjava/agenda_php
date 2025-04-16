@@ -18,6 +18,7 @@ class ClienteController extends Controller{
     }
     
     public function create(){
+        $dados["cliente"] = Flash::getForm();
         $dados["view"] = "Cliente/Create";
         $this->load("template", $dados);
     }
@@ -27,9 +28,36 @@ class ClienteController extends Controller{
         $this->load("template", $dados);
     }
     
-    public function salvar(){
-    }
-    
+    public function salvar()
+    {
+        $cliente = new \stdClass();
+        $cliente->id_cliiente =$_POST['id_cliente'];
+        $cliente->cliente =$_POST['cliente'];
+        $cliente->endereco =$_POST['endereco'];
+        $cliente->complemento =$_POST['complemento'];
+        $cliente->numero =$_POST['numero'];
+        $cliente->bairro =$_POST['bairro'];
+        $cliente->cidade =$_POST['cidade'];
+        $cliente->uf =$_POST['uf'];
+        $cliente->cpf =$_POST['cpf'];
+        $cliente->cep =$_POST['cep'];
+        $cliente->celular =$_POST['celular'];
+        $cliente->uf =$_POST['uf'];
+        $cliente->email =$_POST['email'];
+        $cliente->senha =$_POST['senha'];
+        $cliente->sexo =$_POST['sexo'];
+        $cliente->data_cadastro =date("Y-m-d");
+
+        Flash::setForm($cliente);
+        if(ClienteService::salvar($cliente, $this->campo, $this->tabela, null)){
+            
+            $this->redirect(URL_BASE . "cliente");
+        }else if (!$cliente->id_cliente){
+            $this->redirect(URL_BASE . "cliente/create");
+        }else{
+            $this->redirect(URL_BASE . "cliente/edit/" . $cliente->id_cliente);
+        }
+    }    
     public function excluir($id){
     }
 }
