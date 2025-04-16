@@ -12,6 +12,7 @@ class ClienteController extends Controller{
     private $campo = "id_cliente";
    
     public function index(){
+        $dados["lista"] = Service::lista($this->tabela);
        $dados["view"]  = "Cliente/Index";
        $this->load("template", $dados);
     }

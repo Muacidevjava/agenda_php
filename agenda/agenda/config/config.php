@@ -1,6 +1,6 @@
 <?php
 define("SERVIDOR", "localhost");
-define("BANCO", "");
+define("BANCO", "agora_agenda");
 define("USUARIO", "root");
 define("SENHA", "");
 define("CHARSET","UTF8");
