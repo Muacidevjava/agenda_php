@@ -2,7 +2,7 @@
 define("SERVIDOR", "localhost");
 define("BANCO", "agora_agenda");
 define("USUARIO", "root");
-define("SENHA", "");
+define("SENHA", "root");
 define("CHARSET","UTF8");
 
 
