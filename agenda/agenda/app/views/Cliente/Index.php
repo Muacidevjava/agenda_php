@@ -51,7 +51,7 @@
 							<td><?php echo $cliente->email?></td>
 							<td align="center"><?php echo $cliente->celular ?></td>
 							<td align="center">
-								<a href="<?php echo URL_BASE." cliente/edit/".$cliente->id_cliente ?>" class="btn btn-verde">Editar</a>
+								<a href="<?php echo URL_BASE."cliente/edit/".$cliente->id_cliente ?>" class="btn btn-verde">Editar</a>
 								<a href="javascript:;" onclick="excluir(this)" data-entidade="cliente" data-id="<?php echo $cliente->id_cliente ?>" class="btn btn-vermelho">Excluir</a>
 							</td>
 						</tr>
