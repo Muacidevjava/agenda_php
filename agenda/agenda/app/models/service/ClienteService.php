@@ -6,7 +6,7 @@ use app\models\validacao\Clientevalidacao;
 
    class ClienteService {
     public static function salvar($cliente,$campo,$validacao,$tabela){
-              $validaca = Clientevalidacao::salvar($cliente);
+              $validacao = Clientevalidacao::salvar($cliente);
               return Service::salvar($cliente, $campo,$validacao->listaErros(),$tabela);
       }
    }
