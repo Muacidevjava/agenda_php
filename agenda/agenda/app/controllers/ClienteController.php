@@ -70,5 +70,13 @@ class ClienteController extends Controller
         }
     }
 
-    public function excluir($id) {}
+    public function excluir($id)
+    {
+        if (Service::excluir($this->tabela, $this->campo, $id)) {
+            Flash::setMsg("Cliente excluído com sucesso!", "sucesso");
+        } else {
+            Flash::setMsg("Não foi possível excluir o cliente!", "erro");
+        }
+        $this->redirect(URL_BASE . "cliente");
+    }
 }
