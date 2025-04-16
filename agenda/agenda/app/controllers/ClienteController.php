@@ -5,6 +5,7 @@ use app\core\Controller;
 use app\models\service\Service;
 use app\core\Flash;
 use app\models\service\ClienteService;
+use Soap\Url;
 
 class ClienteController extends Controller{
 
@@ -31,33 +32,30 @@ class ClienteController extends Controller{
     public function salvar()
     {
         $cliente = new \stdClass();
-        $cliente->id_cliiente =$_POST['id_cliente'];
-        $cliente->cliente =$_POST['cliente'];
-        $cliente->endereco =$_POST['endereco'];
-        $cliente->complemento =$_POST['complemento'];
-        $cliente->numero =$_POST['numero'];
-        $cliente->bairro =$_POST['bairro'];
-        $cliente->cidade =$_POST['cidade'];
-        $cliente->uf =$_POST['uf'];
-        $cliente->cpf =$_POST['cpf'];
-        $cliente->cep =$_POST['cep'];
-        $cliente->celular =$_POST['celular'];
-        $cliente->uf =$_POST['uf'];
-        $cliente->email =$_POST['email'];
-        $cliente->senha =$_POST['senha'];
-        $cliente->sexo =$_POST['sexo'];
-        $cliente->data_cadastro =date("Y-m-d");
-
+    
+        $cliente->id_cliente = !empty($_POST['id_cliente']) ? $_POST['id_cliente'] : null;
+        $cliente->cliente = $_POST['cliente'];
+        $cliente->endereco = $_POST['endereco'];
+        $cliente->numero = $_POST['numero'];
+        $cliente->bairro = $_POST['bairro'];
+        $cliente->cidade = $_POST['cidade'];
+        $cliente->uf = $_POST['uf'];
+        $cliente->cep = $_POST['cep'];
+        $cliente->ddd = $_POST['ddd'] ?? ''; // Add the ddd field
+        $cliente->celular = $_POST['celular'];
+        $cliente->cpf = $_POST['cpf'];
+        $cliente->sexo = $_POST['sexo'];
+        $cliente->email = $_POST['email'];
+        $cliente->data_cadastro = date("Y-m-d");
+        
         Flash::setForm($cliente);
-        if(ClienteService::salvar($cliente, $this->campo, $this->tabela, null)){
-            
-            $this->redirect(URL_BASE . "cliente");
-        }else if (!$cliente->id_cliente){
-            $this->redirect(URL_BASE . "cliente/create");
+        if(ClienteService::salvar($cliente, $this->campo, null, $this->tabela)){
+            $this->redirect(URL_BASE."cliente");
         }else{
-            $this->redirect(URL_BASE . "cliente/edit/" . $cliente->id_cliente);
+            $this->redirect(URL_BASE."cliente/create");
         }
-    }    
+    }
+    
     public function excluir($id){
     }
 }

@@ -13,8 +13,8 @@ class Clientevalidacao {
         $validacao->setData('bairro', $cliente->bairro);
         $validacao->setData('cidade', $cliente->cidade);
         $validacao->setData('uf',$cliente->uf);
-
         
+        $validacao->getData('cliente')->isVazio();
         $validacao->getData('cep')->isVazio();
         $validacao->getData('bairro')->isVazio();
         $validacao->getData('cidade') ->isVazio();
