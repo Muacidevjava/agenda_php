@@ -50,6 +50,7 @@ class ClienteController extends Controller
         $cliente->id_cliente = !empty($_POST['id_cliente']) ? $_POST['id_cliente'] : null;
         $cliente->cliente = $_POST['cliente'];
         $cliente->endereco = $_POST['endereco'];
+        $cliente->complemento = $_POST['complemento'];
         $cliente->numero = $_POST['numero'];
         $cliente->bairro = $_POST['bairro'];
         $cliente->cidade = $_POST['cidade'];

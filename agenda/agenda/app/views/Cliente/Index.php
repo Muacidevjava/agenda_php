@@ -39,8 +39,9 @@
 						<th align="left">ID</th>
 						<th align="left">Nome</th>
 						<th align="left">Email</th>
-						<th align="center">Telefone</th>
+						<th align="cent">Telefone</th>
 						<th align="center">Ação</th>
+						
 					</tr>
 				</thead>
 				<tbody>
